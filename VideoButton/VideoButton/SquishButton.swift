@@ -1,10 +1,10 @@
+
 //
-//  SquishButton
-//  Released under the MIT license.
-//  http://github.com/BalestraPatrick/SquishButton
+//  SquishButton.swift
+//  VideoButton
 //
-//  Created by Patrick Balestra on 04/08/2017.
-//  Copyright (c) 2017 Patrick Balestra. All rights reserved.
+//  Created by mac126 on 2018/5/29.
+//  Copyright © 2018年 mac126. All rights reserved.
 //
 
 import UIKit
