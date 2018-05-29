@@ -17,7 +17,11 @@ class ViewController: UIViewController {
     }
     
     func setupSlider() {
-        
+//        let inset: CGFloat = 10.0
+//        let y = view.bounds.height - inset
+//        let width = view.bounds.
+//        let rect = CGRect(x: inset, y: y, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
+//        let slider = UISlider(frame: <#T##CGRect#>)
     }
 
     override func didReceiveMemoryWarning() {
