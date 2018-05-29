@@ -42,11 +42,12 @@ class ViewController: UIViewController {
     
     @objc func squishButtonTouchUpInside(sender: UIButton) {
         print("squishButtonTouchUpInside")
+        // 拍照
     }
     
     @objc func squishButtonLongPress(gesture: UILongPressGestureRecognizer) {
 
-        if gesture.state == .began {
+        if gesture.state == .began { // 开始录制视频
             print("longpressbegan")
             
             progressView.isHidden = false
@@ -55,7 +56,7 @@ class ViewController: UIViewController {
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.handleTimer(sender:)), userInfo: nil, repeats: true)
             timer.fire()
             
-        } else if gesture.state == .ended {
+        } else if gesture.state == .ended { // 结束录制视频
             print("longpressended")
             timer.invalidate()
             print("-count-\(count)")
@@ -63,6 +64,22 @@ class ViewController: UIViewController {
         }
         
     }
+    
+    @objc func handleTimer(sender: Timer) {
+        count = count + 0.1
+        if maxVideoTime > count { // 继续录制视频
+            progressView.progress = count / maxVideoTime
+            
+        } else { // 停止录制视频
+            print("到时间了")
+            timer.invalidate()
+            print("-count-\(count)")
+            progressView.isHidden = true
+        }
+    }
+    
+    
+    
     
     // MARK: - 从触发按钮到离开按钮的时间内（不固定）触发的事件
     func setupButtonGesture3() {
@@ -84,18 +101,6 @@ class ViewController: UIViewController {
         print("-count-\(count)")
     }
     
-    @objc func handleTimer(sender: Timer) {
-        count = count + 0.1
-        if maxVideoTime > count { // 继续录制
-            progressView.progress = count / maxVideoTime
-            
-        } else { // 停止录制
-            print("到时间了")
-            timer.invalidate()
-            print("-count-\(count)")
-            progressView.isHidden = true
-            
-        }
-    }
+
 }
 
