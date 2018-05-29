@@ -59,6 +59,7 @@ class ViewController: UIViewController {
             print("longpressended")
             timer.invalidate()
             print("-count-\(count)")
+            progressView.isHidden = true
         }
         
     }
@@ -85,7 +86,16 @@ class ViewController: UIViewController {
     
     @objc func handleTimer(sender: Timer) {
         count = count + 0.1
-        progressView.progress = count / maxVideoTime
+        if maxVideoTime > count { // 继续录制
+            progressView.progress = count / maxVideoTime
+            
+        } else { // 停止录制
+            print("到时间了")
+            timer.invalidate()
+            print("-count-\(count)")
+            progressView.isHidden = true
+            
+        }
     }
 }
 
