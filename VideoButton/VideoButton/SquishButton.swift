@@ -60,7 +60,6 @@ open class SquishButton: UIButton {
                 
                 layer.borderColor = UIColor.red.cgColor
             }
-            
         }
     }
     
