@@ -40,8 +40,6 @@ class ViewController: UIViewController {
         // 定义长按0.8时间触发
         longPress.minimumPressDuration = 0.8
         squishButton.addGestureRecognizer(longPress)
-        
-        
     }
     
     @objc func squishButtonTouchUpInside(sender: UIButton) {
@@ -81,6 +79,14 @@ class ViewController: UIViewController {
             
         } else { // 停止录制视频
             print("到时间了")
+            let gesture = squishButton.gestureRecognizers?.filter({ (gesture) -> Bool in
+                return gesture is UILongPressGestureRecognizer
+            }).first as! UILongPressGestureRecognizer
+            // ????state只读属性，苹果文档UIGestureRecognizer的子类UILongPressGestureRecognizer的state为可写可读
+            // ARBear中不报错，这个程序中报错？？？
+            // gesture.state = .ended
+
+
             timer.invalidate()
             print("-count-\(count)")
             progressView.isHidden = true
