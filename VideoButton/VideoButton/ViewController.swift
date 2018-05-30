@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UIKit.UIGestureRecognizerSubclass
 
 class ViewController: UIViewController {
 
@@ -83,13 +84,12 @@ class ViewController: UIViewController {
                 return gesture is UILongPressGestureRecognizer
             }).first as! UILongPressGestureRecognizer
             // ????state只读属性，苹果文档UIGestureRecognizer的子类UILongPressGestureRecognizer的state为可写可读
-            // ARBear中不报错，这个程序中报错？？？
-            // gesture.state = .ended
+            // ARBear中不报错，这个程序中报错？？？Cannot
+            gesture.state = .ended
 
-
-            timer.invalidate()
-            print("-count-\(count)")
-            progressView.isHidden = true
+//            timer.invalidate()
+//            print("-count-\(count)")
+//            progressView.isHidden = true
         }
     }
     
