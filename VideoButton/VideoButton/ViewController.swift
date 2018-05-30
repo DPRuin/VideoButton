@@ -24,6 +24,8 @@ class ViewController: UIViewController {
         progressView.progress = 0
         progressView.isHidden = true
         
+        progressView.progressTintColor = UIColor.red
+        
         setupButtonGesture2()
     }
     
@@ -43,12 +45,15 @@ class ViewController: UIViewController {
     @objc func squishButtonTouchUpInside(sender: UIButton) {
         print("squishButtonTouchUpInside")
         // 拍照
+        squishButton.type = ButtonType.camera
+        
     }
     
     @objc func squishButtonLongPress(gesture: UILongPressGestureRecognizer) {
 
         if gesture.state == .began { // 开始录制视频
             print("longpressbegan")
+            squishButton.type = ButtonType.video
             
             progressView.isHidden = false
             
@@ -58,6 +63,8 @@ class ViewController: UIViewController {
             
         } else if gesture.state == .ended { // 结束录制视频
             print("longpressended")
+            squishButton.type = ButtonType.camera
+            
             timer.invalidate()
             print("-count-\(count)")
             progressView.isHidden = true

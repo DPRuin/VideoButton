@@ -27,8 +27,13 @@ open class SquishButton: UIButton {
     /// The color of the inner rectangle.
     open var color = UIColor.white
 
+    open var outerRingWidth = CGFloat(6) {
+        didSet {
+            layer.borderWidth = outerRingWidth
+        }
+    }
     /// The inset between the outer border and inner rectangle.
-    open var innerInset = CGFloat(5) {
+    open var innerInset = CGFloat(10) {
         didSet {
             innerShape.path = UIBezierPath(roundedRect: bounds.insetBy(dx: innerInset, dy: innerInset), cornerRadius: bounds.height / 2).cgPath
         }
@@ -46,11 +51,14 @@ open class SquishButton: UIButton {
                 innerShape.add(animation, forKey: "fillColor")
                 innerShape.fillColor = UIColor.white.cgColor
                 
-            } else if type == ButtonType.video {
+                layer.borderColor = UIColor.white.cgColor
                 
+            } else if type == ButtonType.video {
                 animation.toValue = UIColor.red.cgColor
                 innerShape.add(animation, forKey: "fillColor")
                 innerShape.fillColor = UIColor.red.cgColor
+                
+                layer.borderColor = UIColor.red.cgColor
             }
             
         }
@@ -95,11 +103,12 @@ open class SquishButton: UIButton {
     }
 
     func setUp() {
+        
         setTitleColor(.white, for: .normal)
         setTitleColor(.clear, for: .highlighted)
 
         layer.cornerRadius = bounds.height / 2
-        layer.borderWidth = 2
+        layer.borderWidth = outerRingWidth
         layer.borderColor = UIColor.white.cgColor
 
         innerShape = CAShapeLayer()
