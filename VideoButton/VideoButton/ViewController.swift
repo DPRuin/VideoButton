@@ -41,6 +41,7 @@ class ViewController: UIViewController {
         longPress.minimumPressDuration = 0.8
         squishButton.addGestureRecognizer(longPress)
         
+        
     }
     
     @objc func squishButtonTouchUpInside(sender: UIButton) {
